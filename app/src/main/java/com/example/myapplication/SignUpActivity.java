@@ -25,7 +25,7 @@ public class SignUpActivity extends AppCompatActivity {
     private EditText editTextPassword;
     private EditText editTextName;
     private Button buttonJoin;
-    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private FirebaseDatabase database = FirebaseDatabase.getInstance("https://test-aa1c1-default-rtdb.asia-southeast1.firebasedatabase.app/");
 
     //DatabaseReference는 데이터베이스의 특정 위치로 연결하는 거라고 생각하면 된다.
     //현재 연결은 데이터베이스에만 딱 연결해놓고
@@ -77,17 +77,17 @@ public class SignUpActivity extends AppCompatActivity {
                     }
                 });
     }
-    public void addUser(Long id,String name, String email ) {
+    public void addUser(Long userId,String name, String email ) {
 
         //여기에서 직접 변수를 만들어서 값을 직접 넣는것도 가능합니다.
         // ex) 갓 태어난 동물만 입력해서 int age=1; 등을 넣는 경우
 
         //animal.java에서 선언했던 함수.
-        User user = new User(id,name,email);
+        User user = new User(userId,name,email);
 
         //child는 해당 키 위치로 이동하는 함수입니다.
         //키가 없는데 "zoo"와 name같이 값을 지정한 경우 자동으로 생성합니다.
-        databaseReference.child("user").push().child(String.valueOf(id)).setValue(user);
-
+        databaseReference.child("user").push().child(String.valueOf(userId)).setValue(user);
+        userId++;
     }
 }

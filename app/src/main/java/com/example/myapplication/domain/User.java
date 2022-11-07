@@ -2,14 +2,13 @@ package com.example.myapplication.domain;
 
 //@IgnoreExtraProperties
 public class User {
-
-    public Long id;
+    public Long userid;
     public String name;
     public String email;
 
     public User() { }
-    public User(Long id, String name, String email) {
-        this.id = id;
+    public User(Long id,String name, String email) {
+        this.userid = id;
         this.name = name;
         this.email = email;
     }
@@ -22,9 +21,7 @@ public class User {
         this.email = email;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public void setUserid(Long userid) {this.userid = userid; }
 
     public String getName() {
         return name;
@@ -34,16 +31,14 @@ public class User {
         return email;
     }
 
-    public Long getId() {
-        return id;
-    }
+    public Long getUserid(){return  userid;}
 
     @Override
     public String toString() {
         return "User{" +
                 "name='" + name + '\'' +
                 ", email='" + email + '\'' +
-                ", age=" + id +
+                ", age=" +
                 '}';
     }
 }
