@@ -2,13 +2,12 @@ package com.example.myapplication.domain;
 
 //@IgnoreExtraProperties
 public class User {
-    public Long userid;
     public String name;
     public String email;
+    public String photo;
 
     public User() { }
-    public User(Long id,String name, String email) {
-        this.userid = id;
+    public User(String name, String email) {
         this.name = name;
         this.email = email;
     }
@@ -21,7 +20,9 @@ public class User {
         this.email = email;
     }
 
-    public void setUserid(Long userid) {this.userid = userid; }
+    //public void setUserid(Long userid) {this.userId = userid; }
+
+    public void setPhoto(String photo) {this.photo = photo;}
 
     public String getName() {
         return name;
@@ -31,7 +32,9 @@ public class User {
         return email;
     }
 
-    public Long getUserid(){return  userid;}
+    //public Long getUserid(){return  userId;}
+
+    public String getPhoto(){return photo;}
 
     @Override
     public String toString() {

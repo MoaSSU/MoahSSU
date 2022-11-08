@@ -50,8 +50,7 @@ public class SignUpActivity extends AppCompatActivity {
                 if (!editTextEmail.getText().toString().equals("") && !editTextPassword.getText().toString().equals("")) {
                     // 이메일과 비밀번호가 공백이 아닌 경우
                     createUser(editTextEmail.getText().toString(), editTextPassword.getText().toString(), editTextName.getText().toString());
-                    addUser(userId,editTextName.getText().toString(),editTextEmail.getText().toString());
-                    userId++;
+                    addUser(editTextName.getText().toString(),editTextEmail.getText().toString());
 
                 } else {
                     // 이메일과 비밀번호가 공백인 경우
@@ -77,17 +76,16 @@ public class SignUpActivity extends AppCompatActivity {
                     }
                 });
     }
-    public void addUser(Long userId,String name, String email ) {
+    public void addUser(String name, String email ) {
 
         //여기에서 직접 변수를 만들어서 값을 직접 넣는것도 가능합니다.
         // ex) 갓 태어난 동물만 입력해서 int age=1; 등을 넣는 경우
 
         //animal.java에서 선언했던 함수.
-        User user = new User(userId,name,email);
+        User user = new User(name,email);
 
         //child는 해당 키 위치로 이동하는 함수입니다.
         //키가 없는데 "zoo"와 name같이 값을 지정한 경우 자동으로 생성합니다.
-        databaseReference.child("user").push().child(String.valueOf(userId)).setValue(user);
-        userId++;
+        databaseReference.child("user").child(name).setValue(user);
     }
 }
