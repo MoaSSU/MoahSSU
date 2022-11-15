@@ -2,46 +2,61 @@ package com.example.myapplication.domain;
 
 //@IgnoreExtraProperties
 public class User {
-    public String name;
-    public String email;
-    public String photo;
 
-    public User() { }
-    public User(String name, String email) {
+    private int id;
+    private String name;
+    private String email;
+    private String photo;
+    private String uuid;
+
+    public User() {
+    }
+
+    public User(int id, String name, String email, String photo, String uuid) {
+        this.id = id;
         this.name = name;
         this.email = email;
+        this.photo = photo;
+        this.uuid = uuid;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    //public void setUserid(Long userid) {this.userId = userid; }
-
-    public void setPhoto(String photo) {this.photo = photo;}
-
-    public String getName() {
-        return name;
-    }
-
     public String getEmail() {
         return email;
     }
 
-    //public Long getUserid(){return  userId;}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-    public String getPhoto(){return photo;}
+    public String getPhoto() {
+        return photo;
+    }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", age=" +
-                '}';
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 }
