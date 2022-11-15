@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
             Date now = new Date();
             String filename = formatter.format(now) + ".png";
             //storage 주소와 폴더 파일명을 지정해 준다.
-            StorageReference storageRef = storage.getReferenceFromUrl("gs://test-aa1c1.appspot.com").child("images/" + "20221121_3520.png");
+            StorageReference storageRef = storage.getReferenceFromUrl("gs://test-aa1c1.appspot.com").child("images/" + filename);
             //올라가거라...
             storageRef.putFile(filePath)
                     //성공시
