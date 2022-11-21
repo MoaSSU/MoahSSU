@@ -4,11 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class PrimaryCuriculumActivity extends AppCompatActivity {
+public class PrimaryCurriculumActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_primary_curiculum);
+        setContentView(R.layout.activity_primary_curriculum);
     }
 }

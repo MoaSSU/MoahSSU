@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class PrimaryListActivity extends AppCompatActivity {
+public class PrimaryCurriculumListActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_primary_list);
+        setContentView(R.layout.activity_primarycurriculum_list);
+
+
     }
 }
