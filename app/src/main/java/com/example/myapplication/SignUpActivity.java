@@ -70,7 +70,7 @@ public class SignUpActivity extends AppCompatActivity {
                             user.setName(name);
 
                             SQLiteDatabase db = dbHelper.getWritableDatabase();
-                            db.execSQL("insert into user (name, email , uuid) values (?, ?, ?, ?)", new String[]{name, email, uuid});
+                            db.execSQL("insert into user (name, email , uuid) values (?, ?, ?)", new String[]{name, email, uuid});
                             db.close();
 
                             // 회원가입 성공시
