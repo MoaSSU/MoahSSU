@@ -10,6 +10,15 @@ public class Curriculum {
     private String photoUri;
     private String description;
     private int difficulty;
+    private int category;
+
+    public int getCategory() {
+        return category;
+    }
+
+    public void setCategory(int category) {
+        this.category = category;
+    }
 
     public int getId() {
         return id;

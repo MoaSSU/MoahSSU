@@ -9,18 +9,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.core.content.res.ResourcesCompat;
-
 import com.example.myapplication.DriveHolder;
-import com.example.myapplication.domain.DriveVO;
+import com.example.myapplication.domain.CurriculumVO;
 
 import java.util.ArrayList;
 
-public class DriveAdapter extends ArrayAdapter<DriveVO> {
+public class DriveAdapter extends ArrayAdapter<CurriculumVO> {
     Context context;
     int resId;
-    ArrayList<DriveVO> data;
-    public DriveAdapter(Context context, int resId, ArrayList<DriveVO> data) {
+    ArrayList<CurriculumVO> data;
+    public DriveAdapter(Context context, int resId, ArrayList<CurriculumVO> data) {
         super(context, resId);
         this.context = context;
         this.resId = resId;
@@ -45,7 +43,7 @@ public class DriveAdapter extends ArrayAdapter<DriveVO> {
         TextView titleView = holder.titleView;
         TextView dateView = holder.dateView;
         ImageView menuImageView = holder.menuImageView;
-        final DriveVO vo = data.get(position);
+        final CurriculumVO vo = data.get(position);
         titleView.setText(vo.title);
         dateView.setText(vo.date);
 
