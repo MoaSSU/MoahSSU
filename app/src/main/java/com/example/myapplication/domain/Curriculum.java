@@ -4,6 +4,7 @@ public class Curriculum {
 
     private int id;
     private String uuid;
+    private String title;
     private String name;
     private String created_date;
     private int best;

@@ -24,9 +24,10 @@ public class DBHelper extends SQLiteOpenHelper {
 
         String curriculumSQL = "create table curriculum (" +
                 "id integer primary key autoincrement, " +
+                "title VARCHAR(45)," +
                 "name VARCHAR(10)," +
                 "description VARCHAR(45)," +
-                "photoUri VARCHAR(20)," +
+                "photoUri VARCHAR(45)," +
                 "uuid VARCHAR(45)," +
                 "best integer," +
                 "difficulty integer," +

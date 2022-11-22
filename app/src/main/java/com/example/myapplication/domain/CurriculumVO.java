@@ -4,5 +4,6 @@ public class CurriculumVO {
     public String image;
     public String title;
     public String name;
-    public String like;
+    public int like;
+    public String likeImage;
 }
