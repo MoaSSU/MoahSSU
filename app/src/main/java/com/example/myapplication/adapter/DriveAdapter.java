@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.myapplication.DriveHolder;
+import com.example.myapplication.CurriculumHolder;
 import com.example.myapplication.domain.CurriculumVO;
 
 import java.util.ArrayList;
@@ -35,10 +35,10 @@ public class DriveAdapter extends ArrayAdapter<CurriculumVO> {
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(resId, null);
-            DriveHolder holder = new DriveHolder(convertView);
+            CurriculumHolder holder = new CurriculumHolder(convertView);
             convertView.setTag(holder);
         }
-        DriveHolder holder = (DriveHolder)convertView.getTag();
+        CurriculumHolder holder = (CurriculumHolder)convertView.getTag();
         ImageView typeImageView = holder.typeImageView;
         TextView titleView = holder.titleView;
         TextView dateView = holder.dateView;

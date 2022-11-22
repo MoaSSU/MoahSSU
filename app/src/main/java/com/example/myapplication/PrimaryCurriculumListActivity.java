@@ -26,9 +26,9 @@ public class PrimaryCurriculumListActivity extends AppCompatActivity {
         ArrayList<CurriculumVO> data = new ArrayList<>();
         while (cursor.moveToNext()) {
             CurriculumVO vo = new CurriculumVO();
-            vo.type = cursor.getString(3);
-            vo.title = cursor.getString(1);
-            vo.date = cursor.getString(2);
+            vo.title = cursor.getString(3);
+            vo.name = cursor.getString(1);
+            vo.like = cursor.getString(2);
             data.add(vo);
         }
         db.close();

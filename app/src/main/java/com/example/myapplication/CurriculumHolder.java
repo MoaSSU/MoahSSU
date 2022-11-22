@@ -4,15 +4,15 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class DriveHolder {
+public class CurriculumHolder {
     public ImageView ImageView;
     public TextView titleView;
     public TextView nameView;
-    public ImageView menuImageView;
-    public DriveHolder(View root) {
+    public TextView likeView;
+    public CurriculumHolder(View root) {
         ImageView = root.findViewById(R.id.curiculumimage);
         titleView = root.findViewById(R.id.curiculumtitle);
         nameView = root.findViewById(R.id.curiculumnName);
-        menuImageView = root.findViewById(R.id.curiculumlike);
+        likeView = root.findViewById(R.id.curiculumlike);
     }
 }

@@ -1,7 +1,8 @@
 package com.example.myapplication.domain;
 
 public class CurriculumVO {
-    public String type;
+    public String image;
     public String title;
-    public String date;
+    public String name;
+    public String like;
 }
