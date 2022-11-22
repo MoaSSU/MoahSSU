@@ -1,24 +1,25 @@
 {
   "project_info": {
     "project_number": "629826154976",
+    "firebase_url": "https://test-aa1c1-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "test-aa1c1",
     "storage_bucket": "test-aa1c1.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:629826154976:android:7fd67167f1a006f1287b85",
+        "mobilesdk_app_id": "1:629826154976:android:e6546a7677cd674d287b85",
         "android_client_info": {
           "package_name": "com.example.myapplication"
         }
       },
       "oauth_client": [
         {
-          "client_id": "629826154976-4ajkdglscbpamq4vabslrcs5dp6cartm.apps.googleusercontent.com",
+          "client_id": "629826154976-c9usnqv5mo8s2ash0gpc3tqfdt41mlod.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.myapplication",
-            "certificate_hash": "da72c87bf739a031a06082f9cc75421b3bb3dcfb"
+            "certificate_hash": "54dbb81ecc34d4d5c5a137075f665c24946a8680"
           }
         },
         {
