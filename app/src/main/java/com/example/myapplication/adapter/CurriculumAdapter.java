@@ -14,11 +14,11 @@ import com.example.myapplication.domain.CurriculumVO;
 
 import java.util.ArrayList;
 
-public class DriveAdapter extends ArrayAdapter<CurriculumVO> {
+public class CurriculumAdapter extends ArrayAdapter<CurriculumVO> {
     Context context;
     int resId;
     ArrayList<CurriculumVO> data;
-    public DriveAdapter(Context context, int resId, ArrayList<CurriculumVO> data) {
+    public CurriculumAdapter(Context context, int resId, ArrayList<CurriculumVO> data) {
         super(context, resId);
         this.context = context;
         this.resId = resId;
@@ -39,15 +39,17 @@ public class DriveAdapter extends ArrayAdapter<CurriculumVO> {
             convertView.setTag(holder);
         }
         CurriculumHolder holder = (CurriculumHolder)convertView.getTag();
-        ImageView typeImageView = holder.typeImageView;
+        //ImageView ImageView = holder.ImageView;
         TextView titleView = holder.titleView;
-        TextView dateView = holder.dateView;
-        ImageView menuImageView = holder.menuImageView;
+        TextView nameView = holder.nameView;
+        TextView likeView = holder.bestView;
+        ImageView likeImageView = holder.likeImageView;
         final CurriculumVO vo = data.get(position);
         titleView.setText(vo.title);
-        dateView.setText(vo.date);
+        nameView.setText(vo.name);
+        likeView.setText(vo.title);
 
-        menuImageView.setOnClickListener(new View.OnClickListener() {
+        likeImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast toast = Toast.makeText(context, vo.title+" menu click", Toast.LENGTH_SHORT);
