@@ -9,18 +9,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.core.content.res.ResourcesCompat;
-
-import com.example.myapplication.DriveHolder;
-import com.example.myapplication.domain.DriveVO;
+import com.example.myapplication.CurriculumHolder;
+import com.example.myapplication.domain.CurriculumVO;
 
 import java.util.ArrayList;
 
-public class DriveAdapter extends ArrayAdapter<DriveVO> {
+public class CurriculumAdapter extends ArrayAdapter<CurriculumVO> {
     Context context;
     int resId;
-    ArrayList<DriveVO> data;
-    public DriveAdapter(Context context, int resId, ArrayList<DriveVO> data) {
+    ArrayList<CurriculumVO> data;
+    public CurriculumAdapter(Context context, int resId, ArrayList<CurriculumVO> data) {
         super(context, resId);
         this.context = context;
         this.resId = resId;
@@ -37,19 +35,21 @@ public class DriveAdapter extends ArrayAdapter<DriveVO> {
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(resId, null);
-            DriveHolder holder = new DriveHolder(convertView);
+            CurriculumHolder holder = new CurriculumHolder(convertView);
             convertView.setTag(holder);
         }
-        DriveHolder holder = (DriveHolder)convertView.getTag();
-        ImageView typeImageView = holder.typeImageView;
+        CurriculumHolder holder = (CurriculumHolder)convertView.getTag();
+        //ImageView ImageView = holder.ImageView;
         TextView titleView = holder.titleView;
-        TextView dateView = holder.dateView;
-        ImageView menuImageView = holder.menuImageView;
-        final DriveVO vo = data.get(position);
+        TextView nameView = holder.nameView;
+        TextView likeView = holder.bestView;
+        ImageView likeImageView = holder.likeImageView;
+        final CurriculumVO vo = data.get(position);
         titleView.setText(vo.title);
-        dateView.setText(vo.date);
+        nameView.setText(vo.name);
+        likeView.setText(vo.title);
 
-        menuImageView.setOnClickListener(new View.OnClickListener() {
+        likeImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast toast = Toast.makeText(context, vo.title+" menu click", Toast.LENGTH_SHORT);

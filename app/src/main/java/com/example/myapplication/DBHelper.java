@@ -10,7 +10,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final int DATABASE_VERSION = 1;
 
     public DBHelper(Context context){
-        super(context, "db", null , DATABASE_VERSION);
+        super(context, "moah", null , DATABASE_VERSION);
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -24,13 +24,31 @@ public class DBHelper extends SQLiteOpenHelper {
 
         String curriculumSQL = "create table curriculum (" +
                 "id integer primary key autoincrement, " +
+                "title VARCHAR(45)," +
                 "name VARCHAR(10)," +
                 "description VARCHAR(45)," +
-                "photoUri VARCHAR(20)," +
+                "photoUri VARCHAR(45)," +
                 "uuid VARCHAR(45)," +
                 "best integer," +
-                "difficulty integer" +")";
+                "difficulty integer," +
+                "category integer" +")";
         db.execSQL(curriculumSQL);
+
+        String userCurriculumSQL = "create table usercurriculum (" +
+                "id integer primary key autoincrement, " +
+                "uuid VARCHAR(45)," +
+                "curriculumId integer" + ")";
+        db.execSQL(userCurriculumSQL);
+
+        String subCurriculumSQL = "create table subcurriculum (" +
+                "id integer primary key autoincrement, " +
+                "name VARCHAR(10)," +
+                "time VARCHAR(10)," +
+                "bookLink VARCHAR(45)," +
+                "videoLink VARCHAR(45)," +
+                "description VARCHAR(45)," +
+                "curriculunId integer" + ")";
+        db.execSQL(subCurriculumSQL);
     }
 
     @Override

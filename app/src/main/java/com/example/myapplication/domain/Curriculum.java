@@ -4,12 +4,22 @@ public class Curriculum {
 
     private int id;
     private String uuid;
+    private String title;
     private String name;
     private String created_date;
     private int best;
     private String photoUri;
     private String description;
     private int difficulty;
+    private int category;
+
+    public int getCategory() {
+        return category;
+    }
+
+    public void setCategory(int category) {
+        this.category = category;
+    }
 
     public int getId() {
         return id;
