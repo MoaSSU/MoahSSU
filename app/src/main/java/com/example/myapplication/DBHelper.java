@@ -47,7 +47,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 "bookLink VARCHAR(45)," +
                 "videoLink VARCHAR(45)," +
                 "description VARCHAR(45)," +
-                "curriculunId integer" + ")";
+                "curriculumId integer" + ")";
         db.execSQL(subCurriculumSQL);
     }
 
