@@ -45,7 +45,7 @@
 
             <TextView
                 android:text="전자의 신"
-                android:id="@+id/curiculumnName"
+                android:id="@+id/curiculumnid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
@@ -60,7 +60,6 @@
             android:textColor="#000000"/>
 
         <ImageView
-            android:id="@+id/likeImage"
             android:src="@drawable/ic_baseline_star_border_24"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

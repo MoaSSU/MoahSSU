@@ -22,30 +22,23 @@ public class Main extends AppCompatActivity implements AdapterView.OnItemClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /*
         // View 세팅
         EditText searchCuriculum = findViewById(R.id.search_bar);
         ListView mainListView = findViewById(R.id.main_listview);
         mainListView.setOnItemClickListener(this);
-        */
 
-        /*
         //Cursor
         DBHelper helper = new DBHelper(this);
         SQLiteDatabase db = helper.getWritableDatabase();
         Cursor cursor = db.rawQuery("select * from tb_data", null);
-         */
 
         //ListView adapter
-        /*
         CursorAdapter cursorAdapter = new SimpleCursorAdapter(this,
-                R.layout.recommend_item,
+                R.layout.custom_item,
                 cursor,
-                new String[]{},
-                new int[]{},
+                new String[]{/*column*/},
+                new int[]{/**/},
                 CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
-         */
-        /*
         mainListView.setAdapter(cursorAdapter);
 
         //block touch
@@ -66,8 +59,6 @@ public class Main extends AppCompatActivity implements AdapterView.OnItemClickLi
                 startActivity(intent);
             }
         });
-
-        */
     }
 
     @Override
