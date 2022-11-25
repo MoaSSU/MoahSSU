@@ -6,7 +6,7 @@
     android:background="@drawable/border2">
 
     <TextView
-        android:text="전자기학"
+        android:id="@+id/subtilte"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="wrap_content"

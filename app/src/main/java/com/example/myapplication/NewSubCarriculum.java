@@ -42,7 +42,7 @@ public class NewSubCarriculum extends AppCompatActivity implements View.OnClickL
 
             DBHelper helper = new DBHelper(this);
             SQLiteDatabase db = helper.getWritableDatabase();
-            db.execSQL("insert into subcurriculum (name,time,description) values (?,?,?)",new String[]{subname,subtime,subdescription});
+            db.execSQL("insert into subcurriculum (name,time,description,curriculumId) values (?,?,?,?)",new String[]{subname,subtime,subdescription,curriculumId});
             db.close();
 
         }
