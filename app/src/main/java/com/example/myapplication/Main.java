@@ -23,6 +23,7 @@ public class Main extends AppCompatActivity implements AdapterView.OnItemClickLi
         setContentView(R.layout.activity_main);
 
         // View 세팅
+        /*
         EditText searchCuriculum = findViewById(R.id.search_bar);
         ListView mainListView = findViewById(R.id.main_listview);
         mainListView.setOnItemClickListener(this);
@@ -36,8 +37,8 @@ public class Main extends AppCompatActivity implements AdapterView.OnItemClickLi
         CursorAdapter cursorAdapter = new SimpleCursorAdapter(this,
                 R.layout.custom_item,
                 cursor,
-                new String[]{/*column*/},
-                new int[]{/**/},
+                new String[]{},
+                new int[]{},
                 CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
         mainListView.setAdapter(cursorAdapter);
 
@@ -59,6 +60,8 @@ public class Main extends AppCompatActivity implements AdapterView.OnItemClickLi
                 startActivity(intent);
             }
         });
+        */
+
     }
 
     @Override

@@ -15,6 +15,6 @@ public class CurriculumHolder {
         titleView = root.findViewById(R.id.curiculumtitle);
         nameView = root.findViewById(R.id.curiculumnName);
         bestView = root.findViewById(R.id.curiculumlike);
-        likeImageView = root.findViewById(R.id.likeImage);
+        likeImageView = root.findViewById(R.id.imageId);
     }
 }
