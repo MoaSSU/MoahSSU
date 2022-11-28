@@ -19,7 +19,7 @@
 
         <ImageView
             android:src="@drawable/ic_baseline_star_border_24"
-            android:id="@+id/curiculumimage"
+            android:id="@+id/curriculumimage"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:adjustViewBounds="true"
@@ -35,7 +35,7 @@
 
             <TextView
                 android:text="00대 과탑의 전자공학 공부법"
-                android:id="@+id/curiculumtitle"
+                android:id="@+id/curriculumtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16dp"
@@ -45,7 +45,7 @@
 
             <TextView
                 android:text="전자의 신"
-                android:id="@+id/curiculumnid"
+                android:id="@+id/curriculumName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
@@ -60,6 +60,7 @@
             android:textColor="#000000"/>
 
         <ImageView
+            android:id="@+id/imageId"
             android:src="@drawable/ic_baseline_star_border_24"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

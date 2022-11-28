@@ -11,10 +11,10 @@ public class CurriculumHolder {
     public TextView bestView;
     public ImageView likeImageView;
     public CurriculumHolder(View root) {
-        ImageView = root.findViewById(R.id.curiculumimage);
-        titleView = root.findViewById(R.id.curiculumtitle);
-        nameView = root.findViewById(R.id.curiculumnName);
+        ImageView = root.findViewById(R.id.curriculumimage);
+        titleView = root.findViewById(R.id.curriculumtitle);
+        nameView = root.findViewById(R.id.curriculumName);
         bestView = root.findViewById(R.id.curiculumlike);
-        likeImageView = root.findViewById(R.id.likeImage);
+        likeImageView = root.findViewById(R.id.imageId);
     }
 }

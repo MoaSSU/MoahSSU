@@ -16,7 +16,7 @@
 
     <ImageView
         android:src="@drawable/enginering"
-        android:id="@id/curiculumimage"
+        android:id="@+id/curiculumimage"
         android:layout_width="match_parent"
         android:layout_height="220dp"
         android:adjustViewBounds="true"
