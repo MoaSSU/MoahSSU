@@ -16,7 +16,7 @@
         android:orientation="vertical">
 
         <ImageView
-            android:src="@drawable/enginering"
+            android:src="@drawable/engineering"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             android:layout_width="match_parent"

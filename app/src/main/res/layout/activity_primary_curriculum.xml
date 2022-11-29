@@ -15,7 +15,7 @@
         android:paddingLeft="10dp"/>
 
     <ImageView
-        android:src="@drawable/enginering"
+        android:src="@drawable/engineering"
         android:id="@id/curiculumimage"
         android:layout_width="match_parent"
         android:layout_height="220dp"

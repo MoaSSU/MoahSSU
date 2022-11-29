@@ -49,27 +49,13 @@ public class Main extends AppCompatActivity implements AdapterView.OnItemClickLi
             @Override
             public void onClick(View view) {
                 // 검색 화면으로 이동
-                Intent intent = new Intent(Main.this, SearchActivity.class);
-
-                ComponentName componentName = new ComponentName(
-                        "com.example.myapplication",
-                        "com.example.myapplication.SearchActivity"
-                );
-
-                startActivity(intent);
+                startActivity( new Intent(Main.this, SearchActivity.class));
             }
         });
     }
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        Intent intent1 = new Intent(Main.this, PrimaryCurriculumListActivity.class);
-
-        ComponentName componentName1 = new ComponentName(
-                "com.example.myapplication",
-                "com.example.myapplication.PrimaryListActivity"
-        );
-
-        startActivity(intent1);
+        startActivity( new Intent(Main.this, PrimaryCurriculumListActivity.class));
     }
 }
