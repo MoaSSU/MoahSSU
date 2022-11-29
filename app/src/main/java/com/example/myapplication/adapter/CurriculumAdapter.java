@@ -43,19 +43,12 @@ public class CurriculumAdapter extends ArrayAdapter<CurriculumVO> {
         TextView titleView = holder.titleView;
         TextView nameView = holder.nameView;
         TextView likeView = holder.bestView;
-        ImageView likeImageView = holder.likeImageView;
+        // ImageView likeImageView = holder.likeImageView;
         final CurriculumVO vo = data.get(position);
         titleView.setText(vo.title);
         nameView.setText(vo.name);
-        likeView.setText(vo.title);
+        //likeView.setText(vo.best);
 
-        likeImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast toast = Toast.makeText(context, vo.title+" menu click", Toast.LENGTH_SHORT);
-                toast.show();
-            }
-        });
         return convertView;
     }
 }
