@@ -22,7 +22,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 "uuid VARCHAR(45)" + ")";
         db.execSQL(memoSQL);
 
-        String curriculumSQL = "create table cugrriculum (" +
+        String curriculumSQL = "create table curriculum (" +
                 "id integer primary key autoincrement, " +
                 "title VARCHAR(45)," +
                 "name VARCHAR(10)," +
@@ -39,7 +39,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 "uuid VARCHAR(45)," +
                 "curriculumId integer" + ")";
         db.execSQL(userCurriculumSQL);
-
+        /*
         String subCurriculumSQL = "create table subcurriculum (" +
                 "id integer primary key autoincrement, " +
                 "name VARCHAR(10)," +
@@ -49,6 +49,8 @@ public class DBHelper extends SQLiteOpenHelper {
                 "description VARCHAR(45)," +
                 "curriculunId integer" + ")";
         db.execSQL(subCurriculumSQL);
+
+         */
     }
 
     @Override

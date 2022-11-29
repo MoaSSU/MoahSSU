@@ -13,7 +13,7 @@
         android:layout_height="30dp" />
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="220dp">
+        android:layout_height="150dp">
         <Button
             android:id = "@+id/btn_add_image"
             android:layout_width="match_parent"
@@ -35,7 +35,7 @@
         android:textSize="15sp"/>
 
     <EditText
-        android:id="@+id/newCurriculumName"
+        android:id="@+id/newCurriculumTitle"
         android:layout_width="350dp"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
@@ -56,31 +56,38 @@
         android:layout_margin="10dp"
         android:layout_gravity="center"
         android:orientation="horizontal">
-        <CheckBox
-            android:id="@+id/high"
-            android:text="상"
-            android:textColor="#000"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_marginHorizontal="10dp"
-            android:layout_alignParentLeft="true" />
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <RadioButton
+                android:id="@+id/high"
+                android:text="상"
+                android:textColor="#000"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_alignParentLeft="true" />
 
-        <CheckBox
-            android:id="@+id/middle"
-            android:text="중"
-            android:textColor="#000"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_marginHorizontal="10dp"
-            android:layout_centerHorizontal="true" />
-        <CheckBox
-            android:id="@+id/low"
-            android:text="하"
-            android:textColor="#000"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_marginHorizontal="10dp"
-            android:layout_alignParentRight="true" />
+            <RadioButton
+                android:id="@+id/middle"
+                android:text="중"
+                android:textColor="#000"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_centerHorizontal="true" />
+            <RadioButton
+                android:id="@+id/low"
+                android:text="하"
+                android:textColor="#000"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_alignParentRight="true" />
+        </RadioGroup>
+
 
     </LinearLayout>
 
@@ -107,6 +114,12 @@
         android:layout_marginBottom="10dp"
         android:text="방법 등록"
         android:textSize="15sp"/>
+
+    <Button
+        android:id="@+id/save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="저장"/>
 
 
 </LinearLayout>
