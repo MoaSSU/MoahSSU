@@ -4,6 +4,6 @@ public class BestCurriculumVO {
     public String image;    // 커리큘럼 이미지
     public String title;    // 커리큘럼 제목
     public String name;     // 커리큘럼 제작자
-    public String uuid;
+    public String id;
     public int like;         //추천수
 }

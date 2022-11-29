@@ -32,11 +32,15 @@ public class Main extends AppCompatActivity{
 
         DBHelper helper = new DBHelper(this);
         SQLiteDatabase db = helper.getWritableDatabase();
-        Cursor cursor = db.rawQuery("select title,name from curriculum order by best desc", null);
+        Cursor cursor = db.rawQuery("select id,title,name from curriculum order by best desc", null);
 
         ArrayList<BestCurriculumVO> data = new ArrayList<>();
         while(cursor.moveToNext()){
             BestCurriculumVO vo = new BestCurriculumVO();
+            vo.id = cursor.getString(0);
+            vo.title = cursor.getString(1);
+            vo.name = cursor.getString(2);
+            data.add(vo);
 
         }// 수정 필요
         db.close();
