@@ -41,8 +41,7 @@ public class Main extends AppCompatActivity{
             vo.title = cursor.getString(1);
             vo.name = cursor.getString(2);
             data.add(vo);
-
-        }// 수정 필요
+        }
         db.close();
         BestCurriculumAdapter adapter = new BestCurriculumAdapter(this, R.layout.best_item, data);
         listView.setAdapter(adapter);
