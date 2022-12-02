@@ -35,7 +35,7 @@ public class Main extends AppCompatActivity{
 
         DBHelper helper = new DBHelper(this);
         SQLiteDatabase db = helper.getWritableDatabase();
-        Cursor cursor = db.rawQuery("select id,title,name from curriculum order by best desc", null);
+        Cursor cursor = db.rawQuery("select id,title,name,photoUri from curriculum order by best desc", null);
 
         ArrayList<BestCurriculumVO> data = new ArrayList<>();
         while(cursor.moveToNext()){
@@ -43,7 +43,8 @@ public class Main extends AppCompatActivity{
             vo.id = cursor.getString(0);
             vo.title = cursor.getString(1);
             vo.name = cursor.getString(2);
-            data.add(vo);//arraylist에 id, title, name 담은것 추가
+            vo.image = cursor.getString(3);
+            data.add(vo);//arraylist에 id, title, name, image담은것 추가
         }
 
         db.close();

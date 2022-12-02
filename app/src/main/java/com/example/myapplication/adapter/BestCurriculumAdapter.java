@@ -1,6 +1,7 @@
 package com.example.myapplication.adapter;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,8 +10,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
+import com.bumptech.glide.Glide;
 import com.example.myapplication.BestCurriculumHolder;
 import com.example.myapplication.BestCurriculumVO;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
@@ -50,7 +55,20 @@ public class BestCurriculumAdapter extends ArrayAdapter<BestCurriculumVO> {
 
         titleView.setText(vo.title);
         nameView.setText(vo.name);
-        //ImageView는 구현 이후에 추가할 예정
+
+
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        if(vo.image !=null) {
+            StorageReference storageRef = storage.getReferenceFromUrl("gs://test-aa1c1.appspot.com").child("images/" + vo.image);
+            if (storageRef != null) {
+                storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        Glide.with(context).load(uri).into(imageView);
+                    }
+                });
+            }
+        }
 
         return convertView;
     }
