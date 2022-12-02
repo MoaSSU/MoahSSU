@@ -30,6 +30,7 @@
         app:queryHint="모아 통합검색"/>
 
     <ImageView
+        android:id="@+id/move_mypage"
         android:layout_width="46dp"
         android:layout_height="46dp"
         android:src="@drawable/ic_launcher_background"

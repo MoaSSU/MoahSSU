@@ -13,25 +13,27 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-    <ImageView
-        android:src="@drawable/ic_baseline_arrow_back_24"
-        android:adjustViewBounds="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/mypage_back"
+            android:src="@drawable/ic_baseline_arrow_back_24"
+            android:adjustViewBounds="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
 
-    <ImageView
-        android:src="@drawable/ic_baseline_more_vert_24"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <ImageView
+            android:src="@drawable/ic_baseline_more_vert_24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 
     <ImageView
+        android:id="@+id/mypage_profile"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
@@ -40,6 +42,7 @@
         android:src="@drawable/ic_baseline_account_circle_24"/>
 
     <TextView
+        android:id="@+id/mypage_userName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Jane"
@@ -155,7 +158,7 @@
         android:background="@drawable/round_border_difficulty">
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="시작한 커리큘럼"
             android:gravity="center_vertical"
@@ -166,6 +169,8 @@
             android:textSize="16sp"/>
 
         <androidx.recyclerview.widget.RecyclerView
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="horizontal"
             android:id="@+id/main_startcurriculum"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -197,8 +202,5 @@
             android:layout_margin="10dp" />
 
     </LinearLayout>
-
-
-
 
 </LinearLayout>
