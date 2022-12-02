@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.myapplication.adapter.CurriculumAdapter;
 import com.example.myapplication.domain.CurriculumVO;
@@ -26,6 +27,13 @@ public class PrimaryCurriculumListActivity extends AppCompatActivity {
         ListView listView = findViewById(R.id.curriculumlist);
         addCurriculum = findViewById(R.id.addCurriculum);
         addCurriculum.setOnClickListener(add);
+
+        //자신을 호출한 액티비티가 보낸 (공부, 취미, 생활) String 추출해서 화면에 띄우기
+        Intent intent = getIntent();
+        String category = (String)intent.getStringExtra("category");
+        TextView categoryView = (TextView)findViewById(R.id.primarycuriculum);
+        categoryView.setText(category);
+
         DBHelper helper = new DBHelper(this);
         SQLiteDatabase db = helper.getWritableDatabase();
         Cursor cursor = db.rawQuery("select title,name,best from curriculum", null);
@@ -41,6 +49,7 @@ public class PrimaryCurriculumListActivity extends AppCompatActivity {
         CurriculumAdapter adapter = new CurriculumAdapter(this, R.layout.curriculum_item, data);
         listView.setAdapter(adapter);
     }
+
     View.OnClickListener add = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -48,5 +57,4 @@ public class PrimaryCurriculumListActivity extends AppCompatActivity {
             startActivity(intent);
         }
     };
-
 }

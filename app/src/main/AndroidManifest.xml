@@ -54,6 +54,7 @@
                 android:value="" />
         </activity>
         <activity android:name=".NewPrimaryCarriculum"/>
+        <activity android:name=".MypageActivity"/>
     </application>
 
 </manifest>
