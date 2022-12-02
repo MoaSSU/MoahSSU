@@ -39,7 +39,8 @@ public class LifeCurriculumListActivity extends AppCompatActivity {
             vo.id = cursor.getInt(0);
             vo.title = cursor.getString(1);
             vo.name = cursor.getString(2);
-            vo.best = cursor.getInt(3);
+            vo.image = cursor.getString(3);
+            vo.best = cursor.getInt(4);
             data.add(vo);
         }
         db.close();
