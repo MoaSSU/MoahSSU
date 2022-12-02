@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 
@@ -40,12 +41,14 @@ public class Main extends AppCompatActivity{
             vo.id = cursor.getString(0);
             vo.title = cursor.getString(1);
             vo.name = cursor.getString(2);
-            data.add(vo);
+            data.add(vo);//arraylist에 id, title, name 담은것 추가
         }
+
         db.close();
         BestCurriculumAdapter adapter = new BestCurriculumAdapter(this, R.layout.best_item, data);
         listView.setAdapter(adapter);
     }
+
     View.OnClickListener study = new View.OnClickListener() {
         @Override
         public void onClick(View view) {

@@ -28,7 +28,7 @@ public class BestCurriculumAdapter extends ArrayAdapter<BestCurriculumVO> {
 
     @Override
     public int getCount() { // 전체 항목의 개수를 판단하기 위해 호출됨.
-        return super.getCount();
+        return data.size();
     }
 
 
