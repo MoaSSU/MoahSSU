@@ -1,6 +1,9 @@
 package com.example.myapplication.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,12 +12,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.myapplication.CurriculumHolder;
 import com.example.myapplication.domain.CurriculumVO;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
-public class CurriculumAdapter extends ArrayAdapter<CurriculumVO> {
+public class CurriculumAdapter extends ArrayAdapter<CurriculumVO>{
     Context context;
     int resId;
     ArrayList<CurriculumVO> data;
@@ -39,7 +46,7 @@ public class CurriculumAdapter extends ArrayAdapter<CurriculumVO> {
             convertView.setTag(holder);
         }
         CurriculumHolder holder = (CurriculumHolder)convertView.getTag();
-        //ImageView ImageView = holder.ImageView;
+        ImageView imageView = holder.ImageView;
         TextView idView = holder.idView;
         TextView titleView = holder.titleView;
         TextView nameView = holder.nameView;
@@ -50,6 +57,19 @@ public class CurriculumAdapter extends ArrayAdapter<CurriculumVO> {
         idView.setText(id);
         titleView.setText(vo.title);
         nameView.setText(vo.name);
+
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        if(vo.image !=null) {
+            StorageReference storageRef = storage.getReferenceFromUrl("gs://test-aa1c1.appspot.com").child("images/" + vo.image);
+            if (storageRef != null) {
+                storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        Glide.with(context).load(uri).into(imageView);
+                    }
+                });
+            }
+        }
         String best = String.valueOf(vo.best);
         bestView.setText(best);
 

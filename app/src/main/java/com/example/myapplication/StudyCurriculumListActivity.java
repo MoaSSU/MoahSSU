@@ -33,14 +33,15 @@ public class StudyCurriculumListActivity extends AppCompatActivity {
         DBHelper helper = new DBHelper(this);
         SQLiteDatabase db = helper.getWritableDatabase();
         //study의 카테고리명은 0
-        Cursor cursor = db.rawQuery("select id,title,name,best from curriculum where category = 0", null);
+        Cursor cursor = db.rawQuery("select id,title,name,photoUri,best from curriculum where category = 0", null);
         ArrayList<CurriculumVO> data = new ArrayList<>();
         while (cursor.moveToNext()) {
             CurriculumVO vo = new CurriculumVO();
             vo.id = cursor.getInt(0);
             vo.title = cursor.getString(1);
             vo.name = cursor.getString(2);
-            vo.best = cursor.getInt(3);
+            vo.image = cursor.getString(3);
+            vo.best = cursor.getInt(4);
             data.add(vo);
         }
         db.close();
