@@ -32,6 +32,10 @@
             android:orientation="vertical"
             android:layout_weight="1"
             android:layout_margin="10dp">
+            <TextView
+                android:id="@+id/curriculumId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:text="00대 과탑의 전자공학 공부법"

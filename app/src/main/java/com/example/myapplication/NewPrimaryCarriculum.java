@@ -3,6 +3,7 @@ package com.example.myapplication;
 import androidx.annotation.IdRes;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -27,6 +28,7 @@ public class NewPrimaryCarriculum extends AppCompatActivity {
     Button saveButtun;
     private int best = 0;
     private int difficulty=0;
+    private int category=0;
     private String tempname = "temp";
     private String name;
     private String uid;
@@ -38,7 +40,8 @@ public class NewPrimaryCarriculum extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         name = user.getDisplayName();
         uid = user.getUid();
-
+        Intent intent = getIntent();
+        category = intent.getIntExtra("category",0);
         high = (RadioButton) findViewById(R.id.high);
         middle = (RadioButton) findViewById(R.id.middle);
         low = (RadioButton) findViewById(R.id.low);
@@ -57,14 +60,15 @@ public class NewPrimaryCarriculum extends AppCompatActivity {
         public void onClick(View view) {
             SQLiteDatabase db = dbHelper.getWritableDatabase();
 
-            db.execSQL("insert into curriculum (title, name, description , uuid , best , difficulty) values"
+            db.execSQL("insert into curriculum (title, name, description , uuid , best , difficulty, category) values"
                     +"("
                     +"'" + newCurriculumTitle.getText().toString() + "',"
                     +"'" + tempname + "',"
                     +"'" + newCurriculumDes.getText().toString() + "',"
                     +"'" + uid + "',"
                     + best +","
-                    + difficulty
+                    + difficulty + ","
+                    + category
                     + ")");
             db.close();
             finish();

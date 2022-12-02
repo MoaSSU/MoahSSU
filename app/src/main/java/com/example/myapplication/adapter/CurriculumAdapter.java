@@ -40,14 +40,18 @@ public class CurriculumAdapter extends ArrayAdapter<CurriculumVO> {
         }
         CurriculumHolder holder = (CurriculumHolder)convertView.getTag();
         //ImageView ImageView = holder.ImageView;
+        TextView idView = holder.idView;
         TextView titleView = holder.titleView;
         TextView nameView = holder.nameView;
-        TextView likeView = holder.bestView;
+        TextView bestView = holder.bestView;
         // ImageView likeImageView = holder.likeImageView;
         final CurriculumVO vo = data.get(position);
+        String id = String.valueOf(vo.id);
+        idView.setText(id);
         titleView.setText(vo.title);
         nameView.setText(vo.name);
-        //likeView.setText(vo.best);
+        String best = String.valueOf(vo.best);
+        bestView.setText(best);
 
         return convertView;
     }
