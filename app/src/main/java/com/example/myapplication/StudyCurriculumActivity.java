@@ -2,17 +2,14 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 
-public class PrimaryCurriculumActivity extends AppCompatActivity {
+public class StudyCurriculumActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_primary_curriculum);
+        setContentView(R.layout.activity_study_curriculum);
 
     }
 
