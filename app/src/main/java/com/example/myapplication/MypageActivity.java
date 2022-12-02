@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -23,6 +24,8 @@ public class MypageActivity extends AppCompatActivity {
 
     ImageView backButton;
     TextView userName;
+    ImageView userProfile;
+    RecyclerView recyclerView1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,42 +34,41 @@ public class MypageActivity extends AppCompatActivity {
         backButton = (ImageView) findViewById(R.id.mypage_back);
         backButton.setOnClickListener(listener);
         userName = (TextView) findViewById(R.id.mypage_userName);
+        userProfile = (ImageView) findViewById(R.id.mypage_profile);
 
         DBHelper helper = new DBHelper(this);
         SQLiteDatabase db = helper.getReadableDatabase();
         Cursor cursor = db.rawQuery("select name from user", null);
         cursor.moveToNext();
-        userName.setText(cursor.getString(0));
+        userName.setText(cursor.getString(0)); // 마이페이지 이름 불러오기
 
-        RecyclerView recyclerView1 = findViewById(R.id.main_startcurriculum);
-        recyclerView1.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
+        recyclerView1 = findViewById(R.id.main_startcurriculum);
 
         Cursor cursorr = db.rawQuery("select title, difficulty from curriculum", null);
 
-        List<MypageVO> list = new ArrayList<>();
+        ArrayList<MypageVO> list = new ArrayList<>();
         while (cursorr.moveToNext()) {
             MypageVO vo = new MypageVO();
-            vo.title = cursorr.getString(0);
-            vo.difficulty = cursorr.getString(1);
+            vo.setTitle(cursorr.getString(0));
+            vo.setDifficulty(cursorr.getString(1));
             list.add(vo);
         }
         db.close();
 
-        recyclerView1.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView1.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         recyclerView1.setAdapter(new CustomAdapter(list));
     }
-
 
     View.OnClickListener listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            if (view == backButton) finish();
+            if(view == backButton) finish();
         }
     };
 
     private class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView title;
-        private TextView difficulty;
+        private final TextView difficulty;
 
         ViewHolder(View view) {
             super(view);
@@ -80,9 +82,9 @@ public class MypageActivity extends AppCompatActivity {
     }
 
     private class CustomAdapter extends RecyclerView.Adapter<ViewHolder> {
-        private List<MypageVO> dataSet;
+        private ArrayList<MypageVO> dataSet;
 
-        CustomAdapter(List<MypageVO> dataSet) {this.dataSet = dataSet;}
+        CustomAdapter(ArrayList<MypageVO> dataSet) {this.dataSet = dataSet;}
 
         @NonNull
         @Override
@@ -93,9 +95,16 @@ public class MypageActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
-            viewHolder.getTitleView().setText((CharSequence) dataSet.get(position));
-            viewHolder.getDifficultyView().setText((CharSequence) dataSet.get(position));
+        public int getItemViewType(int position) {
+            return super.getItemViewType(position);
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int position) {
+            final MypageVO vo = dataSet.get(position);
+
+            viewHolder.getTitleView().setText(vo.getTitle());
+            viewHolder.getDifficultyView().setText(vo.getDifficulty());
         }
 
         @Override
@@ -103,6 +112,7 @@ public class MypageActivity extends AppCompatActivity {
             return dataSet.size();
         }
     }
+
 
     // private class CustomItemDecoration extends RecyclerView.ItemDecoration { }
 }

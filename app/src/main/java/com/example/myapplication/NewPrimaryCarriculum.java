@@ -3,6 +3,8 @@ package com.example.myapplication;
 import androidx.annotation.IdRes;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -18,6 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class NewPrimaryCarriculum extends AppCompatActivity {
+    Context context;
     RadioButton high;
     RadioButton middle;
     RadioButton low;
@@ -33,6 +36,7 @@ public class NewPrimaryCarriculum extends AppCompatActivity {
     private DBHelper dbHelper = new DBHelper(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        context=this;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_primary_carriculum);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -68,6 +72,8 @@ public class NewPrimaryCarriculum extends AppCompatActivity {
                     + ")");
             db.close();
             finish();
+            Intent intent = new Intent(context, PrimaryCurriculumListActivity.class);
+            startActivity(intent);
         }
     };
 

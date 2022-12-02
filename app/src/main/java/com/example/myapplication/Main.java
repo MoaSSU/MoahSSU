@@ -17,13 +17,9 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
-import com.google.firebase.internal.InternalTokenProvider;
-
 public class Main extends AppCompatActivity{
 
     CardView moveStudy;
-    CardView moveHobby;
-    CardView moveLife;
     ImageView moveMypage;
 
     @Override
@@ -31,36 +27,22 @@ public class Main extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         moveStudy = (CardView) findViewById(R.id.study_button);
-        moveStudy.setOnClickListener(listener);
-        moveHobby = (CardView) findViewById(R.id.hobby_button);
-        moveHobby.setOnClickListener(listener);
-        moveLife = (CardView) findViewById(R.id.life_button);
-        moveLife.setOnClickListener(listener);
+        moveStudy.setOnClickListener(study);
         moveMypage = (ImageView) findViewById(R.id.go_to_mypage);
-        moveMypage.setOnClickListener(listener);
+        moveMypage.setOnClickListener(study);
     }
-    View.OnClickListener listener = new View.OnClickListener() {
+    View.OnClickListener study = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             if(view == moveStudy) {
                 Intent intent = new Intent(Main.this, PrimaryCurriculumListActivity.class);
-                intent.putExtra("category","공부");
                 startActivity(intent);
             }
-            else if(view == moveHobby) {
-                Intent intent = new Intent(Main.this, PrimaryCurriculumListActivity.class);
-                intent.putExtra("category","취미");
-                startActivity(intent);
-            }
-            else if(view == moveLife) {
-                Intent intent = new Intent(Main.this, PrimaryCurriculumListActivity.class);
-                intent.putExtra("category","생활");
-                startActivity(intent);
-            }
-            else if(view == moveMypage) {
+            else if (view ==moveMypage) {
                 Intent intent = new Intent(Main.this, MypageActivity.class);
                 startActivity(intent);
             }
+
         }
     };
 
