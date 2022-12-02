@@ -40,6 +40,7 @@ public class NewPrimaryCarriculum extends AppCompatActivity {
     RadioButton low;
     RadioGroup radioGroup;
     Button addPhoto;
+    Button back;
     EditText newCurriculumTitle;
     EditText newCurriculumDes;  //설명
     Button saveButtun;
@@ -57,6 +58,8 @@ public class NewPrimaryCarriculum extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_primary_carriculum);
+        back = findViewById(R.id.btn_back);
+        back.setOnClickListener(moveBack);
 
         //로그인한 유저 정보
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -209,6 +212,12 @@ public class NewPrimaryCarriculum extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "파일을 먼저 선택하세요.", Toast.LENGTH_SHORT).show();
         }
     }
+    View.OnClickListener moveBack = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            finish();
+        }
+    };
 
 
 }
