@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.myapplication.CurriculumHolder;
+import com.example.myapplication.DBHelper;
 import com.example.myapplication.domain.CurriculumVO;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
@@ -58,6 +59,7 @@ public class CurriculumAdapter extends ArrayAdapter<CurriculumVO>{
         titleView.setText(vo.title);
         nameView.setText(vo.name);
 
+        //이미지 가져오기
         FirebaseStorage storage = FirebaseStorage.getInstance();
         if(vo.image !=null) {
             StorageReference storageRef = storage.getReferenceFromUrl("gs://test-aa1c1.appspot.com").child("images/" + vo.image);
