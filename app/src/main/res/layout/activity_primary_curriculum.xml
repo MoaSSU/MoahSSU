@@ -3,11 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StudyCurriculumActivity"
+    tools:context=".PrimaryCurriculumActivity"
     android:orientation="vertical"
     >
 
     <ImageView
+        android:id="@+id/back"
         android:src="@drawable/ic_baseline_arrow_back_24"
         android:adjustViewBounds="true"
         android:layout_width="wrap_content"
@@ -54,6 +55,7 @@
         android:paddingRight="10dp">
 
         <TextView
+            android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -61,11 +63,6 @@
             android:textSize="16dp"
             android:textStyle="bold"
             android:textColor="#000000"/>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_share_24" />
 
     </LinearLayout>
 
@@ -77,6 +74,7 @@
         android:orientation="horizontal">
 
         <TextView
+            android:id="@+id/category"
             android:text="공부"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -91,6 +89,7 @@
             android:textColor="#000000"/>
 
         <TextView
+            android:id="@+id/difficulty"
             android:text="난이도 상"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -111,6 +110,7 @@
             android:layout_height="match_parent"/>
 
         <TextView
+            android:id="@+id/best"
             android:text="234"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -120,6 +120,7 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/description"
         android:text="심화과목 : 전자기학, 회로이론, 디지털시스템설계, 물리전자공학, 기초회로 및 디지털실험, 반도체소자, 전자회로, 신호 및 시스템, 마이크로파공학, 안테나공학, 반도체공학, 레이다공학, 아날로그직접회로, RF시스템 설계 등을 듣게됩니다. 00대 과탑의 전자공학 공부법을 알고십다면 클릭"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -130,16 +131,7 @@
         android:ellipsize="end"
         android:textColor="#000000"/>
 
-    <TextView
-        android:text="더보기"
-        android:id="@+id/more"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:layout_gravity="right"
-        android:textStyle="bold"
-        android:textColor="#000000"/>
+
 
     <ImageView
         android:src="@drawable/ic_baseline_horizontal_rule_24"
@@ -149,40 +141,6 @@
         android:adjustViewBounds="true"
         android:scaleType="fitXY"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:layout_marginTop="5dp">
-
-        <TextView
-            android:text="평균 소요 시간 : "
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#000000"/>
-
-        <TextView
-            android:text="2주"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#000000"/>
-
-    </LinearLayout>
-
-    <TextView
-        android:text="필요한 것 : "
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#000000"/>
-
-    <ListView
-        android:layout_margin="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
 
     <ImageView
         android:src="@drawable/ic_baseline_horizontal_rule_24"
@@ -193,80 +151,14 @@
         android:scaleType="fitXY"
         android:layout_marginBottom="10dp"/>
 
-
-    <LinearLayout
+    <Button
+        android:id="@+id/btn_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp">
-
-        <TextView
-            android:text="후기 "
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#000000"
-            android:textSize="16dp"/>
-
-        <TextView
-            android:text="3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#008858"
-            android:textSize="16dp"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="내용을 입력해주세요."
-            android:paddingBottom="60dp"
-            android:paddingTop="5dp"
-            android:paddingLeft="5dp"
-            android:layout_margin="10dp"
-            android:background="@drawable/border"
-            />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginRight="10dp"
-            android:layout_gravity="right">
-
-            <TextView
-                android:text="취소"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"/>
+        android:layout_gravity="center"
+        android:text="시작"/>
 
 
-            <TextView
-                android:text="등록"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
-
-        <ImageView
-            android:src="@drawable/ic_baseline_horizontal_rule_24"
-            android:layout_width="600dp"
-            android:layout_height="2dp"
-            android:layout_gravity="center"
-            android:adjustViewBounds="true"
-            android:scaleType="fitXY"
-            android:layout_marginTop="10dp"/>
-
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"/>
-
-    </LinearLayout>
 
 
 </LinearLayout>

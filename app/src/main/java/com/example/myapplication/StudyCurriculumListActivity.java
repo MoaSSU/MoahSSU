@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -16,10 +17,11 @@ import com.example.myapplication.domain.CurriculumVO;
 
 import java.util.ArrayList;
 
-public class StudyCurriculumListActivity extends AppCompatActivity {
+public class StudyCurriculumListActivity extends AppCompatActivity{
 
     Button addCurriculum;
     ImageView back;
+    ArrayList<CurriculumVO> data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +36,7 @@ public class StudyCurriculumListActivity extends AppCompatActivity {
         SQLiteDatabase db = helper.getWritableDatabase();
         //study의 카테고리명은 0
         Cursor cursor = db.rawQuery("select id,title,name,photoUri,best from curriculum where category = 0", null);
-        ArrayList<CurriculumVO> data = new ArrayList<>();
+        data = new ArrayList<>();
         while (cursor.moveToNext()) {
             CurriculumVO vo = new CurriculumVO();
             vo.id = cursor.getInt(0);

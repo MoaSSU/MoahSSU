@@ -37,11 +37,16 @@ public class DBHelper extends SQLiteOpenHelper {
         String userCurriculumSQL = "create table usercurriculum (" +
                 "id integer primary key autoincrement, " +
                 "uuid VARCHAR(45)," +
-                "curriculumId integer," +
-                "start integer." +   //0이면 시작 안한거 1이면 시작
-                "best integer," +     //0이면 좋아요 안누른거 1이면 좋아요 누른거
+                "curriculumId integer" +
                 ")";
         db.execSQL(userCurriculumSQL);
+
+        String likeCurriculumSQL = "create table likecurriculum (" +
+                "id integer primary key autoincrement, " +
+                "uuid VARCHAR(45)," +
+                "curriculumId integer" +
+                ")";
+        db.execSQL(likeCurriculumSQL);
 
     }
 

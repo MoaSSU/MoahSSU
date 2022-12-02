@@ -6,9 +6,17 @@ public class Curriculum {
     private String uuid;
     private String title;
     private String name;
-    private String created_date;
     private int best;
     private String photoUri;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     private String description;
     private int difficulty;
     private int category;
@@ -43,14 +51,6 @@ public class Curriculum {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getCreated_date() {
-        return created_date;
-    }
-
-    public void setCreated_date(String created_date) {
-        this.created_date = created_date;
     }
 
     public int getBest() {

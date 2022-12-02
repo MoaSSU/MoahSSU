@@ -1,6 +1,7 @@
 package com.example.myapplication.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
@@ -12,9 +13,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.bumptech.glide.Glide;
 import com.example.myapplication.CurriculumHolder;
 import com.example.myapplication.DBHelper;
+import com.example.myapplication.PrimaryCurriculumActivity;
+import com.example.myapplication.StudyCurriculumListActivity;
 import com.example.myapplication.domain.CurriculumVO;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
@@ -74,6 +79,14 @@ public class CurriculumAdapter extends ArrayAdapter<CurriculumVO>{
         }
         String best = String.valueOf(vo.best);
         bestView.setText(best);
+        titleView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, PrimaryCurriculumActivity.class);
+                intent.putExtra("curriculumId",vo.id);
+                ((StudyCurriculumListActivity)context).startActivity(intent);
+            }
+        });
 
         return convertView;
     }
