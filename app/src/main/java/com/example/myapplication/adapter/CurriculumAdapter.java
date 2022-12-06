@@ -84,7 +84,7 @@ public class CurriculumAdapter extends ArrayAdapter<CurriculumVO>{
             public void onClick(View view) {
                 Intent intent = new Intent(context, PrimaryCurriculumActivity.class);
                 intent.putExtra("curriculumId",vo.id);
-                ((StudyCurriculumListActivity)context).startActivity(intent);
+                (context).startActivity(intent);
             }
         });
 

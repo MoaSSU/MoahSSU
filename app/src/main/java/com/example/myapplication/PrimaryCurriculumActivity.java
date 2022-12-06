@@ -29,7 +29,7 @@ public class PrimaryCurriculumActivity extends AppCompatActivity {
     Button start;
     String name;
     String uid;
-    boolean check=false; // 이 커리큘럼을 시작했는지 체크
+
     DBHelper helper = new DBHelper(this);
 
     @Override
@@ -40,9 +40,11 @@ public class PrimaryCurriculumActivity extends AppCompatActivity {
         curriculumId = intent.getIntExtra("curriculumId",0);
         start = (Button) findViewById(R.id.btn_start);
         back = (ImageView) findViewById(R.id.back);
+
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         name = user.getDisplayName();
         uid = user.getUid();
+
         SQLiteDatabase db = helper.getWritableDatabase();
         //study의 카테고리명은 0
         Cursor cursor = db.rawQuery("select title,name,photoUri,best,category,description from curriculum where id = " +curriculumId, null);
@@ -71,9 +73,21 @@ public class PrimaryCurriculumActivity extends AppCompatActivity {
         }
         descriptionView.setText(curriculum.getDescription());
 
+
+        //커리큘럼을 시작한지 안 시작했는지 체크
+        boolean check = false; // 이 커리큘럼을 시작했는지 체크
+        Cursor cursor1 = db.rawQuery("select uuid from usercurriculum where curriculumId = " + curriculumId, null);
+        while (cursor1.moveToNext()) {
+            String tmp = cursor1.getString(0);
+            if(tmp.equals(uid)) check = true;
+        }
+
         start.setOnClickListener(startCurriculum);
+        back.setOnClickListener(moveBack);
         if(check){
             start.setVisibility(View.GONE);  //이미 시작했으므로 사라지게 함
+        }else{
+            start.setVisibility(View.VISIBLE);
         }
         db.close();
     }
@@ -87,8 +101,15 @@ public class PrimaryCurriculumActivity extends AppCompatActivity {
                     +"'" + uid + "',"
                     + curriculumId
                     + ")");
+            db.close();
             finish();
         }
     };
 
+    View.OnClickListener moveBack = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            finish();
+        }
+    };
 }
