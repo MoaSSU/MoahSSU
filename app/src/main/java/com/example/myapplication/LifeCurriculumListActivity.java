@@ -32,7 +32,7 @@ public class LifeCurriculumListActivity extends AppCompatActivity {
         DBHelper helper = new DBHelper(this);
         SQLiteDatabase db = helper.getWritableDatabase();
         //life의 카테고리명은 2
-        Cursor cursor = db.rawQuery("select id,title,name,best from curriculum where category = 2", null);
+        Cursor cursor = db.rawQuery("select id,title,name,photoUri,best from curriculum where category = 2", null);
         ArrayList<CurriculumVO> data = new ArrayList<>();
         while (cursor.moveToNext()) {
             CurriculumVO vo = new CurriculumVO();

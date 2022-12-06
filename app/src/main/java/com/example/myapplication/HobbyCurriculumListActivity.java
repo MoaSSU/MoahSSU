@@ -32,7 +32,7 @@ public class HobbyCurriculumListActivity extends AppCompatActivity {
         DBHelper helper = new DBHelper(this);
         SQLiteDatabase db = helper.getWritableDatabase();
         //hobby의 카테고리명은 1
-        Cursor cursor = db.rawQuery("select id,title,name,best from curriculum where category = 1", null);
+        Cursor cursor = db.rawQuery("select id,title,name,photoUri,best from curriculum where category = 1", null);
         ArrayList<CurriculumVO> data = new ArrayList<>();
         while (cursor.moveToNext()) {
             CurriculumVO vo = new CurriculumVO();
