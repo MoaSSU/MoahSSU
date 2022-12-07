@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
@@ -16,6 +17,7 @@ public class Main extends AppCompatActivity{
     CardView moveHobby;
     CardView moveLife;
     ImageView moveMypage;
+    SearchView moveSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,9 @@ public class Main extends AppCompatActivity{
         moveLife.setOnClickListener(life);
         moveMypage = (ImageView) findViewById(R.id.move_mypage);
         moveMypage.setOnClickListener(mypage);
+        moveSearch = (SearchView) findViewById(R.id.main_searchview);
+        moveSearch.setOnClickListener(searchView);
+
 
     }
     View.OnClickListener study = new View.OnClickListener() {
@@ -59,6 +64,13 @@ public class Main extends AppCompatActivity{
         @Override
         public void onClick(View view) {
             Intent intent = new Intent(Main.this, MypageActivity.class);
+            startActivity(intent);
+        }
+    };
+    View.OnClickListener searchView = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(Main.this,SearchActivity.class);
             startActivity(intent);
         }
     };
