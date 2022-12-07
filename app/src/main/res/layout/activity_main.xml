@@ -23,6 +23,7 @@
         android:scaleType="centerInside"/>
 
     <androidx.appcompat.widget.SearchView
+        android:id="@+id/main_searchview"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="wrap_content"
