@@ -82,12 +82,15 @@ public class PrimaryCurriculumActivity extends AppCompatActivity {
             if(tmp.equals(uid)) check = true;
         }
 
-        start.setOnClickListener(startCurriculum);
+
         back.setOnClickListener(moveBack);
         if(check){
-            start.setVisibility(View.GONE);  //이미 시작했으므로 사라지게 함
+            start.setText("중지");
+            start.setOnClickListener(stopCurriculum);
         }else{
             start.setVisibility(View.VISIBLE);
+            start.setText("시작");
+            start.setOnClickListener(startCurriculum);
         }
         db.close();
     }
@@ -101,6 +104,15 @@ public class PrimaryCurriculumActivity extends AppCompatActivity {
                     +"'" + uid + "',"
                     + curriculumId
                     + ")");
+            db.close();
+            finish();
+        }
+    };
+    View.OnClickListener stopCurriculum = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            SQLiteDatabase db = helper.getWritableDatabase();
+            db.execSQL("delete from usercurriculum where curriculumId = " +curriculumId);
             db.close();
             finish();
         }
