@@ -26,6 +26,7 @@
             android:layout_weight="1"/>
 
         <ImageView
+            android:id="@+id/setting"
             android:src="@drawable/ic_baseline_more_vert_24"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -56,7 +57,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-        android:layout_margin="10dp">
+        android:layout_margin="10dp"
+        android:paddingBottom="10dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -65,6 +67,7 @@
             android:layout_marginRight="50dp">
 
             <TextView
+                android:id="@+id/curriculm_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="10"
@@ -97,7 +100,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="10"
+                android:text="0"
                 android:textSize="16dp"
                 android:textStyle="bold"
                 android:textColor="#000000"
@@ -126,7 +129,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="10"
+                android:text="1"
                 android:textSize="16dp"
                 android:textStyle="bold"
                 android:textColor="#000000"
@@ -160,7 +163,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="시작한 커리큘럼"
+            android:text="등록한 커리큘럼"
             android:gravity="center_vertical"
             android:paddingTop="10dp"
             android:paddingLeft="10dp"
@@ -172,31 +175,6 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:orientation="horizontal"
             android:id="@+id/main_startcurriculum"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp" />
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:orientation="vertical"
-        android:background="@drawable/round_border_difficulty">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="등록한 커리큘럼"
-            android:gravity="center_vertical"
-            android:paddingTop="10dp"
-            android:paddingLeft="10dp"
-            android:textStyle="bold"
-            android:textColor="#000000"
-            android:textSize="16sp"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/main_registercurriculum"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp" />
