@@ -20,6 +20,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.myapplication.domain.MypageVO;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -30,9 +32,11 @@ public class MypageActivity extends AppCompatActivity {
 
     ImageView backButton;
     TextView userName;
+    TextView userCurriculum;
     ImageView userProfile;
     RecyclerView recyclerView1;
     Context context;
+    ImageView setting;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +46,13 @@ public class MypageActivity extends AppCompatActivity {
         backButton.setOnClickListener(listener);
         userName = (TextView) findViewById(R.id.mypage_userName);
         userProfile = (ImageView) findViewById(R.id.mypage_profile);
-        String userProfileUri;
+        userCurriculum = (TextView) findViewById(R.id.curriculm_number);
+        setting = (ImageView) findViewById(R.id.setting);
+        setting.setOnClickListener(settingView);
         context = this;
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
 
         DBHelper helper = new DBHelper(this);
         SQLiteDatabase db = helper.getReadableDatabase();
@@ -139,7 +148,14 @@ public class MypageActivity extends AppCompatActivity {
         }
     }
 
+    View.OnClickListener settingView = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(MypageActivity.this,SettingActivity.class);
+            startActivity(intent);
+        }
+    };
 
 
-    // private class CustomItemDecoration extends RecyclerView.ItemDecoration { }
+
 }
