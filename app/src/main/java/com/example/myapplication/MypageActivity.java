@@ -37,6 +37,8 @@ public class MypageActivity extends AppCompatActivity {
     RecyclerView recyclerView1;
     Context context;
     ImageView setting;
+    TextView registerNUm;
+    TextView startNum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,8 @@ public class MypageActivity extends AppCompatActivity {
         userCurriculum = (TextView) findViewById(R.id.curriculm_number);
         setting = (ImageView) findViewById(R.id.setting);
         setting.setOnClickListener(settingView);
+        registerNUm = (TextView) findViewById(R.id.curriculm_number);
+        startNum = (TextView) findViewById(R.id.startCurriculmNum);
         context = this;
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -60,9 +64,17 @@ public class MypageActivity extends AppCompatActivity {
         while (cursor.moveToNext()) {
             userName.setText(cursor.getString(0)); // 마이페이지 이름 불러오기
         }
+        Cursor cursor1 = db.rawQuery("select count(*) from curriculum where uuid = " + "\"" + uid + "\"", null);
+        while (cursor1.moveToNext()) {
+            registerNUm.setText(cursor1.getString(0)); // 등록한 커리큘럼 수
+        }
+        Cursor cursor2 = db.rawQuery("select count(*) from usercurriculum where uuid = " + "\"" + uid + "\"", null);
+        while (cursor2.moveToNext()) {
+            startNum.setText(cursor2.getString(0)); // 등록한 커리큘럼 수
+        }
         recyclerView1 = findViewById(R.id.main_startcurriculum);
 
-        Cursor cursorr = db.rawQuery("select title, difficulty, photoUri from curriculum", null);
+        Cursor cursorr = db.rawQuery("select title, difficulty, photoUri from curriculum where uuid = " + "\"" + uid + "\"", null);
 
         ArrayList<MypageVO> list = new ArrayList<>();
         while (cursorr.moveToNext()) {
@@ -126,7 +138,14 @@ public class MypageActivity extends AppCompatActivity {
             final MypageVO vo = dataSet.get(position);
 
             viewHolder.getTitleView().setText(vo.getTitle());
-            viewHolder.getDifficultyView().setText(vo.getDifficulty());
+            if(vo.getDifficulty().equals("1")){
+                viewHolder.getDifficultyView().setText("하");
+            }else if(vo.getDifficulty().equals("2")){
+                viewHolder.getDifficultyView().setText("중");
+            }else{
+                viewHolder.getDifficultyView().setText("상");
+            }
+
 
             FirebaseStorage storage = FirebaseStorage.getInstance();
             if(vo.getImageUrl() !=null) {
