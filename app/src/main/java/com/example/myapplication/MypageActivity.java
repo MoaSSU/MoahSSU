@@ -91,11 +91,11 @@ public class MypageActivity extends AppCompatActivity {
         }
 
         Cursor cursorrr = db.rawQuery("select curriculum.id,curriculum.title, curriculum.difficulty, curriculum.photoUri " +
-                "from curriculum inner join usercurriculum on usercurriculum.uuid = curriculum.uuid " +
-                "where curriculum.uuid = " + "\"" + uid + "\"", null);
+                "from curriculum join usercurriculum on usercurriculum.curriculumId = curriculum.id " +
+                "where usercurriculum.uuid = " + "\"" + uid + "\"", null);
 
         ArrayList<MypageVO> list1 = new ArrayList<>();
-        while (cursorr.moveToNext()) {
+        while (cursorrr.moveToNext()) {
             MypageVO vo = new MypageVO();
             vo.setId(cursorrr.getInt(0));
             vo.setTitle(cursorrr.getString(1));
