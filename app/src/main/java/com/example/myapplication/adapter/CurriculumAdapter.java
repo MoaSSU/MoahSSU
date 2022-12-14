@@ -1,7 +1,12 @@
 package com.example.myapplication.adapter;
 
+import static com.example.myapplication.R.drawable.ic_baseline_favorite_24;
+import static com.example.myapplication.R.drawable.ic_baseline_favorite_border_24;
+
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
@@ -19,6 +24,7 @@ import com.bumptech.glide.Glide;
 import com.example.myapplication.CurriculumHolder;
 import com.example.myapplication.DBHelper;
 import com.example.myapplication.PrimaryCurriculumActivity;
+import com.example.myapplication.R;
 import com.example.myapplication.StudyCurriculumListActivity;
 import com.example.myapplication.domain.CurriculumVO;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -31,6 +37,8 @@ public class CurriculumAdapter extends ArrayAdapter<CurriculumVO>{
     Context context;
     int resId;
     ArrayList<CurriculumVO> data;
+    int i=0;
+
     public CurriculumAdapter(Context context, int resId, ArrayList<CurriculumVO> data) {
         super(context, resId);
         this.context = context;
@@ -56,13 +64,17 @@ public class CurriculumAdapter extends ArrayAdapter<CurriculumVO>{
         TextView idView = holder.idView;
         TextView titleView = holder.titleView;
         TextView nameView = holder.nameView;
-        TextView bestView = holder.bestView;
-        // ImageView likeImageView = holder.likeImageView;
+        //TextView bestView = holder.bestView;
+        ImageView likeImageView = holder.likeImageView;
+
         final CurriculumVO vo = data.get(position);
         String id = String.valueOf(vo.id);
         idView.setText(id);
         titleView.setText(vo.title);
         nameView.setText(vo.name);
+
+
+
 
         //이미지 가져오기
         FirebaseStorage storage = FirebaseStorage.getInstance();
@@ -77,8 +89,31 @@ public class CurriculumAdapter extends ArrayAdapter<CurriculumVO>{
                 });
             }
         }
-        String best = String.valueOf(vo.best);
-        bestView.setText(best);
+
+        /*
+        //좋아요 아이콘 변경
+        int best = vo.best;
+
+        likeImageView.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                if(best==1){
+                    i = i - 1;
+                    likeImageView.setImageResource(ic_baseline_favorite_border_24);
+                    data.set(vo.best, null);
+                }
+                else{
+
+                    likeImageView.setImageResource(ic_baseline_favorite_24);
+                    //data.set(vo.best, );
+                }
+
+            }
+        });*/
+
+
+        //bestView.setText(best);
         titleView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
