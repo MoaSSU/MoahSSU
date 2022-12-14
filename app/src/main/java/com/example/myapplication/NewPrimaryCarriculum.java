@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -49,8 +50,8 @@ public class NewPrimaryCarriculum extends AppCompatActivity {
     private int best = 0;
     private int difficulty=0;
     private int category=0;
+    private String userName;
     private String filename;
-    private String tempname = "temp";
     private String name;
     private String uid;
     private DBHelper dbHelper = new DBHelper(this);
@@ -66,6 +67,13 @@ public class NewPrimaryCarriculum extends AppCompatActivity {
         name = user.getDisplayName();
         uid = user.getUid();
 
+        DBHelper helper = new DBHelper(this);
+        SQLiteDatabase db = helper.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select name from user where uuid = " + "\"" + uid + "\"", null);
+        while (cursor.moveToNext()) {
+            userName=(cursor.getString(0)); // 마이페이지 이름 불러오기
+        }
+        db.close();
         //인텐트로 카테고리 변수 받기
         Intent intent = getIntent();
         category = intent.getIntExtra("category",0);
@@ -100,7 +108,7 @@ public class NewPrimaryCarriculum extends AppCompatActivity {
             db.execSQL("insert into curriculum (title, name, description ,photoUri, uuid , best , difficulty, category) values"
                     +"("
                     +"'" + newCurriculumTitle.getText().toString() + "',"
-                    +"'" + tempname + "',"
+                    +"'" + userName + "',"
                     +"'" + newCurriculumDes.getText().toString() + "',"
                     +"'" + filename + "',"
                     +"'" + uid + "',"

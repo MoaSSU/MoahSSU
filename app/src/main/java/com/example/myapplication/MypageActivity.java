@@ -56,10 +56,10 @@ public class MypageActivity extends AppCompatActivity {
 
         DBHelper helper = new DBHelper(this);
         SQLiteDatabase db = helper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("select name from user", null);
-        cursor.moveToNext();
-        userName.setText(cursor.getString(0)); // 마이페이지 이름 불러오기
-
+        Cursor cursor = db.rawQuery("select name from user where uuid = " + "\"" + uid + "\"", null);
+        while (cursor.moveToNext()) {
+            userName.setText(cursor.getString(0)); // 마이페이지 이름 불러오기
+        }
         recyclerView1 = findViewById(R.id.main_startcurriculum);
 
         Cursor cursorr = db.rawQuery("select title, difficulty, photoUri from curriculum", null);
