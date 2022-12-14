@@ -10,6 +10,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -23,6 +24,7 @@ public class Main extends AppCompatActivity{
     CardView moveLife;
     ImageView moveMypage;
     SearchView moveSearch;
+    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,14 +40,15 @@ public class Main extends AppCompatActivity{
         moveMypage.setOnClickListener(mypage);
         moveSearch = (SearchView) findViewById(R.id.main_searchview);
         moveSearch.setOnClickListener(searchView);
+        listView = findViewById(R.id.main_listview);
 
-        ListView listView = findViewById(R.id.main_listview);
 
         DBHelper helper = new DBHelper(this);
         SQLiteDatabase db = helper.getWritableDatabase();
         Cursor cursor = db.rawQuery("select id,title,name,photoUri from curriculum", null);
 
         ArrayList<BestCurriculumVO> data = new ArrayList<>();
+
         while(cursor.moveToNext()){
             BestCurriculumVO vo = new BestCurriculumVO();
             vo.id = cursor.getString(0);
@@ -59,8 +62,9 @@ public class Main extends AppCompatActivity{
         BestCurriculumAdapter adapter = new BestCurriculumAdapter(this, R.layout.best_item, data);
         listView.setAdapter(adapter);
 
-
     }
+
+
     View.OnClickListener study = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
