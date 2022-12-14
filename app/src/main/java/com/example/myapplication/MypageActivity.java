@@ -37,6 +37,7 @@ public class MypageActivity extends AppCompatActivity {
     TextView userCurriculum;
     ImageView userProfile;
     RecyclerView recyclerView1;
+    RecyclerView recyclerView2;
     Context context;
     ImageView setting;
     TextView registerNUm;
@@ -74,7 +75,8 @@ public class MypageActivity extends AppCompatActivity {
         while (cursor2.moveToNext()) {
             startNum.setText(cursor2.getString(0)); // 등록한 커리큘럼 수
         }
-        recyclerView1 = findViewById(R.id.main_startcurriculum);
+        recyclerView1 = findViewById(R.id.main_regcurriculum);
+        recyclerView2 = findViewById(R.id.main_startcurriculum);
 
         Cursor cursorr = db.rawQuery("select id,title, difficulty, photoUri from curriculum where uuid = " + "\"" + uid + "\"", null);
 
@@ -87,10 +89,27 @@ public class MypageActivity extends AppCompatActivity {
             vo.setImageUrl(cursorr.getString(3));
             list.add(vo);
         }
-        db.close();
 
+        Cursor cursorrr = db.rawQuery("select curriculum.id,curriculum.title, curriculum.difficulty, curriculum.photoUri " +
+                "from curriculum inner join usercurriculum on usercurriculum.uuid = curriculum.uuid " +
+                "where curriculum.uuid = " + "\"" + uid + "\"", null);
+
+        ArrayList<MypageVO> list1 = new ArrayList<>();
+        while (cursorr.moveToNext()) {
+            MypageVO vo = new MypageVO();
+            vo.setId(cursorrr.getInt(0));
+            vo.setTitle(cursorrr.getString(1));
+            vo.setDifficulty(cursorrr.getString(2));
+            vo.setImageUrl(cursorrr.getString(3));
+            list1.add(vo);
+        }
+        db.close();
+        //등록한 커리큘럼 리스트
         recyclerView1.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         recyclerView1.setAdapter(new CustomAdapter(list,this) );
+        //시작한 커리큘럼 리스트
+        recyclerView2.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        recyclerView2.setAdapter(new CustomAdapter(list1,this) );
     }
 
     View.OnClickListener listener = new View.OnClickListener() {
