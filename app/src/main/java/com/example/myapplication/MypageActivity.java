@@ -9,11 +9,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -74,20 +76,21 @@ public class MypageActivity extends AppCompatActivity {
         }
         recyclerView1 = findViewById(R.id.main_startcurriculum);
 
-        Cursor cursorr = db.rawQuery("select title, difficulty, photoUri from curriculum where uuid = " + "\"" + uid + "\"", null);
+        Cursor cursorr = db.rawQuery("select id,title, difficulty, photoUri from curriculum where uuid = " + "\"" + uid + "\"", null);
 
         ArrayList<MypageVO> list = new ArrayList<>();
         while (cursorr.moveToNext()) {
             MypageVO vo = new MypageVO();
-            vo.setTitle(cursorr.getString(0));
-            vo.setDifficulty(cursorr.getString(1));
-            vo.setImageUrl(cursorr.getString(2));
+            vo.setId(cursorr.getInt(0));
+            vo.setTitle(cursorr.getString(1));
+            vo.setDifficulty(cursorr.getString(2));
+            vo.setImageUrl(cursorr.getString(3));
             list.add(vo);
         }
         db.close();
 
         recyclerView1.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        recyclerView1.setAdapter(new CustomAdapter(list));
+        recyclerView1.setAdapter(new CustomAdapter(list,this) );
     }
 
     View.OnClickListener listener = new View.OnClickListener() {
@@ -98,13 +101,16 @@ public class MypageActivity extends AppCompatActivity {
     };
 
     private class ViewHolder extends RecyclerView.ViewHolder {
+        private final CardView all;
+        private final TextView id;
         private final TextView title;
         private final TextView difficulty;
         private final ImageView imageUrl;
 
         ViewHolder(View view) {
             super(view);
-
+            all = view.findViewById(R.id.mypage_card);
+            id = view.findViewById(R.id.cardId);
             title =view.findViewById(R.id.text_primary);
             difficulty = view.findViewById(R.id.text_difficulty);
             imageUrl = view.findViewById(R.id.imgView_item);
@@ -113,12 +119,17 @@ public class MypageActivity extends AppCompatActivity {
         TextView getTitleView() {return title;}
         TextView getDifficultyView() {return difficulty;}
         ImageView getImageView() {return imageUrl;}
+        TextView getIdView() {return id;}
     }
 
     private class CustomAdapter extends RecyclerView.Adapter<ViewHolder> {
         private ArrayList<MypageVO> dataSet;
+        private Context context;
 
-        CustomAdapter(ArrayList<MypageVO> dataSet) {this.dataSet = dataSet;}
+        CustomAdapter(ArrayList<MypageVO> dataSet,Context context) {
+            this.dataSet = dataSet;
+            this.context = context;
+        }
 
         @NonNull
         @Override
@@ -136,6 +147,14 @@ public class MypageActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int position) {
             final MypageVO vo = dataSet.get(position);
+            viewHolder.all.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(context, PrimaryCurriculumActivity.class);
+                    intent.putExtra("curriculumId",vo.getId());
+                    context.startActivity(intent);
+                }
+            });
 
             viewHolder.getTitleView().setText(vo.getTitle());
             if(vo.getDifficulty().equals("1")){
@@ -174,7 +193,5 @@ public class MypageActivity extends AppCompatActivity {
             startActivity(intent);
         }
     };
-
-
 
 }
