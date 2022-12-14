@@ -1,17 +1,23 @@
 package com.example.myapplication.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
 import com.bumptech.glide.Glide;
 import com.example.myapplication.BestCurriculumHolder;
+import com.example.myapplication.Main;
+import com.example.myapplication.PrimaryCurriculumActivity;
+import com.example.myapplication.R;
 import com.example.myapplication.domain.BestCurriculumVO;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
@@ -50,12 +56,22 @@ public class BestCurriculumAdapter extends ArrayAdapter<BestCurriculumVO> {
         ImageView imageView = holder.ImageView;
         TextView titleView = holder.titleView;
         TextView nameView = holder.nameView;
+        TextView textView = holder.idView;
 
         final BestCurriculumVO vo = data.get(position);
 
         titleView.setText(vo.title);
         nameView.setText(vo.name);
+        textView.setText(vo.id);
 
+        titleView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context,PrimaryCurriculumActivity.class);
+                intent.putExtra("curriculumId",vo.id);
+                context.startActivity(intent);
+            }
+        });
 
 
         FirebaseStorage storage = FirebaseStorage.getInstance();
@@ -71,6 +87,9 @@ public class BestCurriculumAdapter extends ArrayAdapter<BestCurriculumVO> {
             }
         }
 
+
         return convertView;
+
     }
+
 }
